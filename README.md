@@ -1,6 +1,7 @@
 # 👻💸GhoPay
-### Built with 🏗 Scaffold-ETH 2
-
+---
+#### 🏗 [Built with Scaffold-ETH 2](https://scaffoldeth.io)
+---
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
   <a href="https://scaffoldeth.io">Website</a>
