@@ -37,13 +37,5 @@
   },
   "resolutions": {
     "usehooks-ts@^2.7.2": "patch:usehooks-ts@npm:^2.7.2#./.yarn/patches/usehooks-ts-npm-2.7.2-fceffe0e43.patch"
-  },
-  "dependencies": {
-    "@aave/contract-helpers": "^1.21.1",
-    "@aave/math-utils": "^1.21.1",
-    "@bgd-labs/aave-address-book": "^2.15.0",
-    "dayjs": "^1.11.10",
-    "ethers": "5",
-    "reflect-metadata": "^0.2.1"
   }
 }
