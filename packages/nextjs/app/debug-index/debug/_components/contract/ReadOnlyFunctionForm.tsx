@@ -11,7 +11,7 @@ import {
   getFunctionInputKey,
   getInitialFormState,
   getParsedContractFunctionArgs,
-} from "~~/app/debug/_components/contract";
+} from "~~/app/debug-index/debug/_components/contract";
 import { getParsedError, notification } from "~~/utils/scaffold-eth";
 
 type ReadOnlyFunctionFormProps = {
