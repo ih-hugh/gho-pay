@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import CopyToClipboard from "react-copy-to-clipboard";
 import { Address as AddressType, isAddress } from "viem";
 import { hardhat } from "viem/chains";
 import { useEnsAvatar, useEnsName } from "wagmi";
