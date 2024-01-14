@@ -1,5 +1,6 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { Metadata } from "next";
+import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
 import "~~/styles/globals.css";
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
@@ -43,7 +44,9 @@ export const metadata: Metadata = {
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
+      </body>
     </html>
   );
 };
