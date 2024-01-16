@@ -1973,6 +1973,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/hardhat@workspace:packages/hardhat"
   dependencies:
+    "@aave/core-v3": ^1.18.0
     "@ethersproject/abi": ^5.7.0
     "@ethersproject/providers": ^5.7.1
     "@nomicfoundation/hardhat-chai-matchers": ^2.0.3
@@ -2005,7 +2006,7 @@ __metadata:
     solidity-coverage: ^0.8.5
     ts-node: ^10.9.1
     typechain: ^8.1.0
-    typescript: ^5.1.6
+    typescript: ^5.3.3
   languageName: unknown
   linkType: soft
 
@@ -11610,6 +11611,7 @@ __metadata:
     "@aave/protocol-v2": ^1.0.1
     husky: ^8.0.1
     lint-staged: ^13.0.3
+    postcss-nested: ^6.0.1
   languageName: unknown
   linkType: soft
 
@@ -12971,7 +12973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.1.6":
+"typescript@npm:^5.1.6, typescript@npm:^5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
   bin:
@@ -12991,7 +12993,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>":
+"typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>, typescript@patch:typescript@^5.3.3#~builtin<compat/typescript>":
   version: 5.3.3
   resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=a1c5e5"
   bin:

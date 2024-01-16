@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@aave/core-v3": "^1.18.0",
-    "@aave/protocol-v2": "^1.0.1"
+    "@aave/protocol-v2": "^1.0.1",
+    "postcss-nested": "^6.0.1"
   }
 }
