@@ -1,25 +1,26 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { Metadata } from "next";
+import { GhoPayAppWithProviders } from "~~/components/gho-pay/GhoPayAppWithProviders";
 import "~~/styles/globals.css";
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : `http://localhost:${process.env.PORT || 3000}`;
+  : `http://localhost:${process.env.PORT}`;
 const imageUrl = `${baseUrl}/thumbnail.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Scaffold-ETH 2 App",
-    template: "%s | Scaffold-ETH 2",
+    default: "GhoPay App",
+    template: "%s | GhoPay App",
   },
-  description: "Built with 🏗 Scaffold-ETH 2",
+  description: "A Decentralized Payment System",
   openGraph: {
     title: {
-      default: "Scaffold-ETH 2 App",
-      template: "%s | Scaffold-ETH 2",
+      default: "GhoPay App",
+      template: "%s | GhoPay App",
     },
-    description: "Built with 🏗 Scaffold-ETH 2",
+    description: "A Decentralized Payment System",
     images: [
       {
         url: imageUrl,
@@ -30,10 +31,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [imageUrl],
     title: {
-      default: "Scaffold-ETH 2",
-      template: "%s | Scaffold-ETH 2",
+      default: "GhoPay App",
+      template: "%s | GhoPay App",
     },
-    description: "Built with 🏗 Scaffold-ETH 2",
+    description: "A Decentralized Payment System",
   },
   icons: {
     icon: [{ url: "/favicon.png", sizes: "32x32", type: "image/png" }],
@@ -43,7 +44,9 @@ export const metadata: Metadata = {
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <GhoPayAppWithProviders>{children}</GhoPayAppWithProviders>
+      </body>
     </html>
   );
 };

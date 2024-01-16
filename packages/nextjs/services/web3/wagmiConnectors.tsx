@@ -1,12 +1,12 @@
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
+  // walletConnectWallet,
   braveWallet,
   coinbaseWallet,
   ledgerWallet,
   metaMaskWallet,
   rainbowWallet,
   safeWallet,
-  walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import * as chains from "viem/chains";
 import { configureChains } from "wagmi";
@@ -50,10 +50,19 @@ export const appChains = configureChains(
 const walletsOptions = { chains: appChains.chains, projectId: scaffoldConfig.walletConnectProjectId };
 const wallets = [
   metaMaskWallet({ ...walletsOptions, shimDisconnect: true }),
-  walletConnectWallet(walletsOptions),
+  /** TODO: Uncomment and fix walletconnect qrModal appearing behind Family Connect Modal if we need Walletconnect */
+  // walletConnectWallet({
+  //   ...walletsOptions,
+  //   options: {
+  //     projectId: scaffoldConfig.walletConnectProjectId,
+  //     // isNewChainsStale?: boolean | undefined;
+  //     // metadata?: CoreTypes.Metadata | undefined;
+  //     showQrModal: false,
+  //   },
+  // }),
   ledgerWallet(walletsOptions),
   braveWallet(walletsOptions),
-  coinbaseWallet({ ...walletsOptions, appName: "scaffold-eth-2" }),
+  coinbaseWallet({ ...walletsOptions, appName: "gho-pay" }),
   rainbowWallet(walletsOptions),
   ...(!targetNetworks.some(network => network.id !== chains.hardhat.id) || !onlyLocalBurnerWallet
     ? [
