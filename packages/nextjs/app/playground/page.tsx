@@ -7,6 +7,7 @@ import { formatReserves } from "@aave/math-utils";
 import * as markets from "@bgd-labs/aave-address-book";
 import dayjs from "dayjs";
 import { ethers } from "ethers";
+import GHOPayButton from "~/components/SDK/GHOPayButton";
 
 const Test = () => {
   const [userAddress, setUserAddress] = useState("");
@@ -72,7 +73,7 @@ const Test = () => {
             userEmodeCategoryId: userReserves.userEmodeCategoryId,
           });
 
-          setBorrowableUSDC(userSummary.totalBorrowsUSD);
+          setBorrowableUSDC(userSummary.availableBorrowsUSD);
 
           console.log("userSummary", userSummary);
           console.log("formattedPoolReserves", formattedPoolReserves);
@@ -91,6 +92,7 @@ const Test = () => {
       <button onClick={connectWallet}>Connect Wallet</button>
       {userAddress && <p>User Address: {userAddress}</p>}
       {borrowableUSDC && <p>Borrowable USDC: {borrowableUSDC}</p>}
+      <GHOPayButton />
     </div>
   );
 };
