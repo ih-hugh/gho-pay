@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html>
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} data-theme="ghoPayLight">
         <GhoPayAppWithProviders>{children}</GhoPayAppWithProviders>
       </body>
     </html>
