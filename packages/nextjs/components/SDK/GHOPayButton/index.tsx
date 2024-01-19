@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import GHOSuperButton from "../GHOSuperButton";
 
 // Define the structure of the state using an interface
@@ -36,15 +37,15 @@ const PaymentPopup: React.FC = () => {
   });
 
   return (
-    <div className="flex flex-col bg-white rounded-[1.5rem] p-6 shadow-xl w-full max-w-2xl p-8">
+    <div className="flex flex-col bg-white rounded-[1.5rem] shadow-xl w-full max-w-2xl p-8">
       <div className="flex justify-center items-center mb-6">
-        <img className="max-w-[120px]" src="logo.png" alt="" />
+        <Image className="max-w-[120px]" src="logo.png" alt="" />
       </div>
 
       <div className=" flex grid-cols-2 space-x-40	">
         <div className="flex flex-col">
           <div className="flex justify-left items-center mb-6">
-            <img src="aave.png" alt="" />
+            <Image src="aave.png" alt="" />
           </div>
           <div className="flex justify-left items-center mb-6 space-x-3">
             <span className="text-2xl font-bold text-gray-700">Credit Limit</span>
