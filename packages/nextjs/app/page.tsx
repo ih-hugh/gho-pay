@@ -25,12 +25,7 @@ const Home: NextPage = () => {
           </h3>
         </Hero>
         <div className="flex space-y-36 flex-col bg-gradient-to-b from-[#242536] to-[#191920] w-full">
-          <GhoCreditCard
-            creditLimit={"$10,000"}
-            enabledAssets={[]}
-            ensDomainName={"Joelcodes.eth"}
-            userAddress={"01223...9870"}
-          />
+          <GhoCreditCard creditLimit={""} enabledAssets={[]} ensDomainName={""} userAddress={""} />
 
           <GhoBalanceInfo />
           <GhoTransactions />
