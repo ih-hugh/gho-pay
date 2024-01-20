@@ -1,7 +1,13 @@
+import { Inter } from "next/font/google";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Metadata } from "next";
 import { GhoPayAppWithProviders } from "~~/components/gho-pay/GhoPayAppWithProviders";
 import "~~/styles/globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -43,7 +49,7 @@ export const metadata: Metadata = {
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html>
+    <html lang="en" className={`${inter.variable} font-sans`}>
       <body suppressHydrationWarning={true} data-theme="ghoPayLight">
         <GhoPayAppWithProviders>{children}</GhoPayAppWithProviders>
       </body>
