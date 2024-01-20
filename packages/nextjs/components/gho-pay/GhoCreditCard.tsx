@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { GhoButton } from "./GhoButton";
+import { GradientText } from "./GradientText";
 
 interface GhoCreditCardProps {
   creditLimit: string;
@@ -40,9 +41,9 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
                 <span className="h-[20px] font- shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] text-[#fff] relative text-left whitespace-nowrap z-[2]">
                   Credit Limit
                 </span>
-                <span className="h-[44px] text-clip bg-text-gradient  shrink-0 basis-auto font-['Inter'] text-[44px] font-extrabold leading-[44px] relative text-left whitespace-nowrap z-[3]">
+                <GradientText className="text-[44px] leading-10" color="blue">
                   {creditLimit}
-                </span>
+                </GradientText>
                 <span className="h-[19px] shrink-0 basis-auto font-['Inter'] text-[16px] font-light leading-[19px] text-[#fff] relative text-left whitespace-nowrap z-[4]">
                   Enabled Assets
                 </span>
