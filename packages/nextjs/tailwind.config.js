@@ -148,6 +148,9 @@ module.exports = {
       boxShadow: {
         center: "0 0 12px -2px rgb(0 0 0 / 0.05)",
       },
+      backgroundImage: {
+        "text-gradient": "linear-gradient(180deg, #0891B2 0%, #67E8F9 100%)",
+      },
       animation: {
         "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },

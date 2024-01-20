@@ -21,7 +21,7 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
       {
         <div className="relative mx-auto my-0 z-50 -top-36 ">
           {!userAddress && (
-            <div className="absolute inset-0 rounded-[16px]  bg-black bg-opacity-50 flex justify-center items-center z-50  ">
+            <div className="absolute inset-0 rounded-[16px]  bg-white bg-opacity-10 flex justify-center items-center z-50  ">
               <div className="flex flex-col items-center space-y-8">
                 <div className="w-[46.209px] h-[44px] shrink-0 bg-[url(../assets/images/0cc33b79-afcc-49c0-aa5e-51b0ffb4b0c9.png)] bg-cover bg-no-repeat relative z-[5]" />
                 <GhoButton url="">Connect Wallet</GhoButton>
@@ -40,7 +40,7 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
                 <span className="h-[20px] font- shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] text-[#fff] relative text-left whitespace-nowrap z-[2]">
                   Credit Limit
                 </span>
-                <span className="h-[44px] shrink-0 basis-auto font-['Inter'] text-[44px] font-extrabold leading-[44px] relative text-left whitespace-nowrap z-[3]">
+                <span className="h-[44px] text-clip bg-text-gradient  shrink-0 basis-auto font-['Inter'] text-[44px] font-extrabold leading-[44px] relative text-left whitespace-nowrap z-[3]">
                   {creditLimit}
                 </span>
                 <span className="h-[19px] shrink-0 basis-auto font-['Inter'] text-[16px] font-light leading-[19px] text-[#fff] relative text-left whitespace-nowrap z-[4]">

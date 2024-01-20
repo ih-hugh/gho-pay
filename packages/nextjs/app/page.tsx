@@ -41,8 +41,7 @@ const Home: NextPage = () => {
           </GhoPayModal>
         </div> */}
         <div className="flex space-y-36 flex-col bg-gradient-to-b from-[#242536] to-[#191920] w-full">
-          <GhoCreditCard creditLimit={""} enabledAssets={[]} ensDomainName={""} userAddress={""} />
-
+          <GhoCreditCard creditLimit={"$10,000"} enabledAssets={[]} ensDomainName={""} userAddress={"sd"} />
           <GhoBalanceInfo />
           <GhoTransactions />
           <GhoDemoPage />

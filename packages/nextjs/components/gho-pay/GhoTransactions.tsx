@@ -4,7 +4,9 @@ export const GhoTransactions: FC<any> = () => {
   return (
     <div className="main-container flex-col mt-10 mb-10 flex w-[1000px] gap-[24px] items-start flex-nowrap relative mx-auto my-0">
       <div className="main-container mt-10 mb-10 flex flex-col gap-4 items-start max-w-md   p-6 rounded-lg">
-        <span className="text-sm font-semibold uppercase text-[#fff] opacity-70">Activity</span>
+        <span className="h-[20px] text-clip bg-text-gradient shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] relative text-left whitespace-nowrap z-[1]">
+          Activity
+        </span>
         <h1 className="text-2xl font-bold text-[#fff] leading-tight">
           Instant Access, <br /> No Onboarding Required
         </h1>
