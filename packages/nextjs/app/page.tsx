@@ -1,9 +1,24 @@
+import { GhoPayAvatarLogo } from "@/components/assets/GhoPayAvatarLogo";
+import { GhoPayCopyLogo } from "@/components/assets/GhoPayCopyLogo";
+import { Hero } from "@/components/gho-pay/Hero";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
     <>
-      <div className="flex items-center flex-col flex-grow pt-10">Home</div>
+      <div className="flex items-center flex-col">
+        <Hero>
+          <div className="-space-y-3">
+            <GhoPayAvatarLogo className="mx-auto relative left-7" />
+            <GhoPayCopyLogo className="mx-auto" />
+          </div>
+
+          <h3 className="font-bold text-2xl w-full flex flex-col mt-1">
+            Decentralized Payments SDK and Credit Card
+            <sub className="font-thin text-sm tracking-wide">Unleash the Buying Power of your Aave Assets with GHO</sub>
+          </h3>
+        </Hero>
+      </div>
     </>
   );
 };

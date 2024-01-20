@@ -2152,6 +2152,7 @@ __metadata:
     autoprefixer: ^10.4.12
     bignumber.js: ^9.1.2
     blo: ^1.0.1
+    classnames: ^2.5.1
     connectkit: ^1.6.0
     daisyui: ^4.4.19
     dayjs: ^1.11.10
@@ -5091,6 +5092,13 @@ __metadata:
     node-gyp: latest
     node-gyp-build: ^4.3.0
   checksum: 773da48aef52a041115d413fee8340b357a4da2eb505764f327183b155edd7cc9d24819eb4f707c83dbdae8588024f5dddeb322125567c59d5d1f6f16334cdb9
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "classnames@npm:2.5.1"
+  checksum: da424a8a6f3a96a2e87d01a432ba19315503294ac7e025f9fece656db6b6a0f7b5003bb1fbb51cbb0d9624d964f1b9bb35a51c73af9b2434c7b292c42231c1e5
   languageName: node
   linkType: hard
 
