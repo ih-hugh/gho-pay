@@ -7,7 +7,7 @@ export const GhoDemoPage: FC<any> = () => {
     <div className="flex flex-col mb-20">
       <div className="mt-20 main-container flex w-[1000px] gap-[64px] items-start flex-nowrap relative mx-auto my-0">
         <div className="flex space-y-10 mb-12 w-[460px] flex-col gap-[16px] items-start shrink-0 flex-nowrap relative">
-          <span className="h-[20px]  self-stretch shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] relative text-left whitespace-nowrap z-[1]">
+          <span className="h-[20px] text-clip bg-text-gradient shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] relative text-left whitespace-nowrap z-[1]">
             Demo
           </span>
           <span className="flex w-[460px] h-[72px] justify-start items-start self-stretch shrink-0 font-['Inter'] text-[32px] font-bold leading-[36px] text-[#fafafa] relative text-left overflow-hidden z-[2]">
@@ -66,7 +66,7 @@ export const GhoDemoPage: FC<any> = () => {
               <div className="w-full h-full bg-[url(../assets/images/c8597f4f-b58d-454e-b78c-9c2d1f80e8d0.png)] bg-[length:100%_100%] bg-no-repeat absolute top-0 left-0 z-[8]" />
             </div>
             <span className="flex w-[73px] h-[36px] justify-center items-center shrink-0 basis-auto font-['Inter'] text-[32px] font-bold leading-[36px] text-[#fafafa] relative text-center whitespace-nowrap z-[9]">
-              2.00
+              20.00
             </span>
           </div>
           <div className="flex w-[184px] h-[90px] gap-[18px] items-center shrink-0 flex-nowrap relative z-10">

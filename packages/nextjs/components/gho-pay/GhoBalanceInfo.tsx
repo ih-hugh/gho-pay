@@ -5,7 +5,7 @@ export const GhoBalanceInfo: FC<any> = () => {
   return (
     <div className="main-container mt-10 mb-10 flex w-[1000px] gap-[24px] items-start flex-nowrap relative mx-auto my-0">
       <div className="flex w-[460px] flex-col gap-[16px] items-start shrink-0 flex-nowrap relative">
-        <span className="h-[20px] shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] relative text-left whitespace-nowrap z-[1]">
+        <span className="h-[20px] text-clip bg-text-gradient shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] relative text-left whitespace-nowrap z-[1]">
           Balances
         </span>
         <div className="w-[460px] shrink-0 font-['Inter'] text-[32px] font-bold leading-[36px] relative text-left z-[2]">
