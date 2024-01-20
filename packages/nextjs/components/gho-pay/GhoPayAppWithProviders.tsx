@@ -41,7 +41,12 @@ export const GhoPayAppWithProviders = ({ children }: { children: React.ReactNode
   return (
     <WagmiConfig config={wagmiConfig}>
       <ProgressBar />
-      <ConnectKitProvider debugMode>
+      <ConnectKitProvider
+        debugMode
+        customTheme={{
+          "--ck-overlay-background": "rgba(255, 0, 0, 0.5)",
+        }}
+      >
         <RainbowKitProvider
           chains={appChains.chains}
           avatar={BlockieAvatar}

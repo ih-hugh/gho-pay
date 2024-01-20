@@ -4,7 +4,7 @@ import { appChains, wagmiConnectors } from "~~/services/web3/wagmiConnectors";
 
 export const wagmiConfig = createConfig(
   getDefaultConfig({
-    autoConnect: false,
+    autoConnect: true,
     connectors: wagmiConnectors,
     publicClient: appChains.publicClient,
     chains: appChains.chains,
