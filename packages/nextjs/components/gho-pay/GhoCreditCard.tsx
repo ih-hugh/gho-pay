@@ -15,7 +15,7 @@ interface GhoCreditCardAssets {
 
 export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAssets, ensDomainName, userAddress }) => {
   return (
-    <div className="main-container flex w-[529px] pt-[48px] pr-[48px] pb-[48px] pl-[48px] flex-col gap-[16px] justify-center items-start flex-nowrap bg-[#1e1e27] rounded-[16px] relative shadow-[0_10px_30px_0_rgba(0,0,0,0.25)] mx-auto my-0 -top-24">
+    <div className="main-container flex w-[529px] pt-[48px] pr-[48px] pb-[48px] pl-[48px] flex-col gap-[16px] justify-center items-start flex-nowrap bg-[#1e1e27] rounded-[16px] relative shadow-[0_10px_30px_0_rgba(0,0,0,0.25)] mx-auto my-0 -top-36">
       <div className="flex gap-[133px] items-start self-stretch shrink-0 flex-nowrap relative">
         <div className="flex w-[181px] flex-col gap-[16px] items-start shrink-0 flex-nowrap relative z-[1]">
           <span className="h-[20px] font- shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] text-[#fff] relative text-left whitespace-nowrap z-[2]">
@@ -44,7 +44,7 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
                 <div className="w-full h-full absolute top-0 left-0 z-[15]">
                   <div className="w-[377.01%] h-[719.89%] absolute top-[-618.31%] left-[-268.1%] z-[16]">
                     {/* <div className="w-[51.932px] h-[40.293px] bg-[url(../assets/images/0d7e9d46-b68d-41e7-bd80-3606503f6f0a.png)] bg-[length:100%_100%] bg-no-repeat relative z-[17] mt-0 mr-0 mb-0 ml-0" /> */}
-                    <div className="flex w-[61.188px] h-[41.565px] justify-between items-center relative z-[19] mt-[208.208px] mr-0 mb-0 ml-[134.6px]">
+                    <div className="flex w-[61.188px] h-[41.565px] justify-between items-center relative z-[19] mt-[208.208px] mr-0 mb-0 ml-[134.6px] top-10">
                       <div className="w-[29.273px] h-[41.564px] shrink-0 bg-[url(../assets/images/81e51355-bcc5-496d-987f-d8cd8892fab4.png)] bg-[length:100%_100%] bg-no-repeat relative z-[18]" />
                       <div className="w-[29.273px] h-[41.564px] shrink-0 bg-[url(../assets/images/b1ff7ef2-3aae-49ea-bfc0-da7cb294c52c.png)] bg-[length:100%_100%] bg-no-repeat relative z-[19]" />
                     </div>

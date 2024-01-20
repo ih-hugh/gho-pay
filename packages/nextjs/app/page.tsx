@@ -2,6 +2,8 @@ import { GhoPayAvatarLogo } from "@/components/assets/GhoPayAvatarLogo";
 import { GhoPayCopyLogo } from "@/components/assets/GhoPayCopyLogo";
 import { GhoBalanceInfo } from "@/components/gho-pay/GhoBalanceInfo";
 import { GhoCreditCard } from "@/components/gho-pay/GhoCreditCard";
+import { GhoDemoPage } from "@/components/gho-pay/GhoDemoPage";
+import { GhoTransactions } from "@/components/gho-pay/GhoTransactions";
 import { Hero } from "@/components/gho-pay/Hero";
 import type { NextPage } from "next";
 
@@ -22,14 +24,17 @@ const Home: NextPage = () => {
             </sub>
           </h3>
         </Hero>
-        <div className="flex flex-col bg-gradient-to-b from-[#242536] to-[#191920] w-full">
+        <div className="flex space-y-36 flex-col bg-gradient-to-b from-[#242536] to-[#191920] w-full">
           <GhoCreditCard
             creditLimit={"$10,000"}
             enabledAssets={[]}
             ensDomainName={"Joelcodes.eth"}
             userAddress={"01223...9870"}
           />
+
           <GhoBalanceInfo />
+          <GhoTransactions />
+          <GhoDemoPage />
         </div>
       </div>
     </>
