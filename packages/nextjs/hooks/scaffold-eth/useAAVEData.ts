@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { ChainId, UiPoolDataProvider } from "@aave/contract-helpers";
 import { formatUserSummary } from "@aave/math-utils";
