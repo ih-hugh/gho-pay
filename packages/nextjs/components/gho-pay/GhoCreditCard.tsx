@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { GradientText } from "./GradientText";
 import useAaveData from "@/hooks/scaffold-eth/useAAVEData";
