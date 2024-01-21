@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { GhoButton } from "./GhoButton";
 import { GradientText } from "./GradientText";
+import { ConnectKitButton } from "connectkit";
 
 interface GhoCreditCardProps {
-  creditLimit: string;
+  creditLimit: number | null;
   enabledAssets: GhoCreditCardAssets[];
-  ensDomainName: string;
-  userAddress: string;
+  ensDomainName: string | null | undefined;
+  userAddress: string | undefined;
   // Add other props as needed
 }
 
@@ -25,7 +25,8 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
             <div className="absolute inset-0 rounded-[16px]  bg-white bg-opacity-10 flex justify-center items-center z-50  ">
               <div className="flex flex-col items-center space-y-8">
                 <div className="w-[46.209px] h-[44px] shrink-0 bg-[url(../assets/images/0cc33b79-afcc-49c0-aa5e-51b0ffb4b0c9.png)] bg-cover bg-no-repeat relative z-[5]" />
-                <GhoButton url="">Connect Wallet</GhoButton>
+                {/* <GhoButton url="">Connect Wallet</GhoButton> */}
+                <ConnectKitButton theme="retro" />
                 <span>Connect Aave assets to see Credit Limit</span>
               </div>
             </div>
@@ -34,14 +35,14 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
           <div
             className={` ${
               !userAddress && "blur-md"
-            } main-container flex w-[529px] pt-[48px] pr-[48px] pb-[48px] pl-[48px] flex-col gap-[16px] justify-center items-start flex-nowrap bg-[#1e1e27] relative shadow-[0_10px_30px_0_rgba(0,0,0,0.25)] mx-auto my-0 `}
+            } main-container flex w-[529px] pt-[48px] pr-[48px] pb-[48px] pl-[48px] flex-col gap-[16px] justify-center items-start flex-nowrap bg-[#1e1e27] relative shadow-[0_10px_30px_0_rgba(0,0,0,0.25)] mx-auto my-0 rounded-2xl`}
           >
             <div className="flex gap-[133px] items-start self-stretch shrink-0 flex-nowrap relative">
               <div className="flex w-[181px] flex-col gap-[16px] items-start shrink-0 flex-nowrap relative z-[1]">
                 <span className="h-[20px] font- shrink-0 basis-auto font-['Inter'] text-[18px] font-light leading-[20px] text-[#fff] relative text-left whitespace-nowrap z-[2]">
                   Credit Limit
                 </span>
-                <GradientText className="text-[44px] leading-10" color="blue">
+                <GradientText className="text-[40px] leading-10" color="blue">
                   {creditLimit}
                 </GradientText>
                 <span className="h-[19px] shrink-0 basis-auto font-['Inter'] text-[16px] font-light leading-[19px] text-[#fff] relative text-left whitespace-nowrap z-[4]">
