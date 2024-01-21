@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { GradientText } from "./GradientText";
+import useAaveData from "@/hooks/scaffold-eth/useAAVEData";
 import { ConnectKitButton } from "connectkit";
 
 interface GhoCreditCardProps {
@@ -15,7 +16,10 @@ interface GhoCreditCardAssets {
   icon: string;
 }
 
-export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAssets, ensDomainName, userAddress }) => {
+export const GhoCreditCard: FC<GhoCreditCardProps> = ({ ensDomainName, userAddress }) => {
+  const { data }: any = useAaveData(userAddress, window);
+  // console.log(data);
+
   return (
     <>
       {" "}
@@ -43,20 +47,13 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
                   Credit Limit
                 </span>
                 <GradientText className="text-[40px] leading-10" color="blue">
-                  {creditLimit}
+                  ${data.userSummary?.availableBorrowsUSD?.toLocaleString("en-US", {}).slice(0, 12) ?? "0"}
                 </GradientText>
                 <span className="h-[19px] shrink-0 basis-auto font-['Inter'] text-[16px] font-light leading-[19px] text-[#fff] relative text-left whitespace-nowrap z-[4]">
-                  Enabled Assets
+                  Loans Outstanding
                 </span>
                 <div className="flex">
-                  {enabledAssets.map((asset, index) => (
-                    <div
-                      key={index}
-                      className="flex w-[69px] gap-[9px] items-start shrink-0 flex-nowrap relative z-[5]"
-                    >
-                      {asset.name}
-                    </div>
-                  ))}
+                  ${data.userSummary?.totalBorrowsUSD?.toLocaleString("en-US", {}).slice(0) ?? "0"}
                 </div>
               </div>
               <div className="flex pt-[24px] pr-0 pb-0 pl-0 flex-col items-end grow shrink-0 basis-0 flex-nowrap relative z-[9]">
@@ -85,7 +82,7 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ creditLimit, enabledAsse
                 {ensDomainName}
               </span>
               <span className="h-[19px] shrink-0 basis-auto font-['Exo_2'] text-[16px] font-medium leading-[19px] text-[#fff] relative text-left whitespace-nowrap z-[23]">
-                {userAddress}
+                {userAddress?.slice(0, 8)}...{userAddress?.slice(-6)}
               </span>
             </div>
           </div>
