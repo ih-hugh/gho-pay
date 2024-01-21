@@ -1297,15 +1297,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/font@npm:^14.1.0":
-  version: 14.1.0
-  resolution: "@next/font@npm:14.1.0"
-  peerDependencies:
-    next: "*"
-  checksum: cad2486e876d87877c007aa24d5753966dbf70f7f82b0a3f668ed22b19ac44c6d9f2cefe763232a822eec6e727f2981641dc1619c001c6715655e5d6a2805017
-  languageName: node
-  linkType: hard
-
 "@next/swc-darwin-arm64@npm:14.0.4":
   version: 14.0.4
   resolution: "@next/swc-darwin-arm64@npm:14.0.4"
@@ -2156,7 +2147,6 @@ __metadata:
     "@bgd-labs/aave-address-book": ^2.17.0
     "@ethersproject/providers": ^5.7.2
     "@heroicons/react": ^2.1.1
-    "@next/font": ^14.1.0
     "@popperjs/core": ^2.11.8
     "@rainbow-me/rainbowkit": 1.3.0
     "@trivago/prettier-plugin-sort-imports": ^4.1.1

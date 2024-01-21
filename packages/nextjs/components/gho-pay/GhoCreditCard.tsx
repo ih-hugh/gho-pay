@@ -19,7 +19,7 @@ interface GhoCreditCardAssets {
 }
 
 export const GhoCreditCard: FC<GhoCreditCardProps> = ({ ensDomainName, userAddress }) => {
-  const { data: aaveData }: any = useAaveData(userAddress, window);
+  const { data: aaveData }: any = useAaveData(userAddress);
 
   // useEffect(() => {
   //   console.log("AAVE DATA: ", aaveData);

@@ -8,6 +8,7 @@ import { GhoPayLogo } from "@/components/assets/GhoPayLogo";
 import { USDCLogo } from "@/components/assets/USDCLogo";
 import { WETHLogo } from "@/components/assets/WETHLogo";
 import { GradientText } from "@/components/gho-pay/GradientText";
+import useAaveData from "@/hooks/scaffold-eth/useAAVEData";
 import { EthereumTransactionTypeExtended, InterestRate, Pool } from "@aave/contract-helpers";
 import * as markets from "@bgd-labs/aave-address-book";
 import classNames from "classnames";
@@ -19,6 +20,7 @@ export const GhoPayStarting = () => {
   const { balanceDue } = useGhoPayContext();
   const walletClient = useWalletClient();
   const { address } = useAccount();
+  const { data: aaveData }: any = useAaveData(address);
 
   async function submitTransaction({
     provider,
@@ -91,7 +93,9 @@ export const GhoPayStarting = () => {
             <span className="text-lg font-light text-[#fafafa]  whitespace-nowrap ">Credit Limit</span>
           </div>
           <span className="justify-center items-start basis-auto text-2xl font-bold   text-center whitespace-nowrap ">
-            <GradientText color="purple">$15,250</GradientText>
+            <GradientText color="purple">
+              ${aaveData.userSummary?.availableBorrowsUSD?.toLocaleString("en-US", {}).slice(0, 12) ?? "0"}
+            </GradientText>
           </span>
           <span className="text-lg font-light text-[#fafafa]  whitespace-nowrap">Asset</span>
           <div className="flex gap-3 items-center">
