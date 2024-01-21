@@ -1,22 +1,21 @@
 "use client";
 
 import React from "react";
-// import aaveAbi from "./AaveABI";
 import { useGhoPayContext } from "./GhoPayContext";
 import { GhoPayLogo } from "@/components/assets/GhoPayLogo";
 import { USDCLogo } from "@/components/assets/USDCLogo";
-// import { useTargetNetwork } from "@/hooks/scaffold-eth/useTargetNetwork";
-// import { EthereumTransactionTypeExtended, InterestRate, Pool } from "@aave/contract-helpers";
 import * as markets from "@bgd-labs/aave-address-book";
 import { ethers } from "ethers";
+import { useWizard } from "react-use-wizard";
 import { useAccount } from "wagmi";
 
 export const GhoPayConfirming = () => {
   const { balanceDue } = useGhoPayContext();
   const { address } = useAccount();
-  // const { targetNetwork } = useTargetNetwork();
+  const { nextStep, previousStep } = useWizard();
 
   async function handleConfirm() {
+    await nextStep();
     const provider = new ethers.providers.Web3Provider(window.ethereum as any);
     const signer = provider.getSigner();
     const erc20Abi = [
@@ -29,12 +28,15 @@ export const GhoPayConfirming = () => {
     const contract = new ethers.Contract(tokenAddress, erc20Abi, signer);
     const recipient = address; // Recipient address
     const amount = ethers.utils.parseUnits(balanceDue.toString(), 18); // Amount to transfer, e.g., 1.0 tokens (adjust decimal)
+
     try {
       const transaction = await contract.transfer(recipient, amount);
       await transaction.wait();
       console.log("Transaction successful:", transaction);
+      await nextStep();
     } catch (error) {
       console.error("Transaction failed:", error);
+      previousStep();
     }
   }
 

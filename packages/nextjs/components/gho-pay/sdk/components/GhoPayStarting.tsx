@@ -13,6 +13,7 @@ import { EthereumTransactionTypeExtended, InterestRate, Pool } from "@aave/contr
 import * as markets from "@bgd-labs/aave-address-book";
 import classNames from "classnames";
 import { BigNumber, ethers, providers } from "ethers";
+import { useWizard } from "react-use-wizard";
 import { useAccount, useWalletClient } from "wagmi";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 
@@ -21,6 +22,7 @@ export const GhoPayStarting = () => {
   const walletClient = useWalletClient();
   const { address } = useAccount();
   const { data: aaveData }: any = useAaveData(address);
+  const { nextStep, previousStep } = useWizard();
 
   async function submitTransaction({
     provider,
@@ -29,21 +31,24 @@ export const GhoPayStarting = () => {
     provider: providers.Web3Provider; // Signing transactions requires a wallet provider, Aave UI currently uses web3-react (https://github.com/NoahZinsmeister/web3-react) for connecting wallets and accessing the wallet provider
     tx: EthereumTransactionTypeExtended[];
   }) {
-    console.log("TX: ", tx);
     const extendedTxData = await tx[0].tx();
-    console.log("EXTENDED_TX_DATA: ", extendedTxData);
     const { from, ...txData } = extendedTxData;
-    console.log("from: ", from);
     const signer = provider.getSigner(from);
-    console.log("SIGNER: ", signer);
     const txResponse = await signer.sendTransaction({
       ...extendedTxData,
       value: txData.value ? BigNumber.from(txData.value) : undefined,
     });
-    console.log("TX_RESPONSE: ", txResponse);
+
+    txResponse.wait().then(async receipt => {
+      await nextStep();
+      if (receipt.status === 0) {
+        previousStep();
+      }
+    });
   }
 
   async function handlePurchase() {
+    await nextStep();
     const provider = new ethers.providers.Web3Provider(window.ethereum as any);
 
     const pool = new Pool(provider, {
@@ -62,13 +67,14 @@ export const GhoPayStarting = () => {
           debtTokenAddress: "0x67ae46EF043F7A4508BD1d6B94DB6c33F0915844",
         });
 
-        submitTransaction({
+        await submitTransaction({
           provider,
           tx,
         });
       }
     } catch (error) {
       console.error("handlePurchase_error: ", error);
+      previousStep();
     }
 
     console.log("PROVIDER: ", provider);
