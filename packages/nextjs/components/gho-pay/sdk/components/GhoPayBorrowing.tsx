@@ -11,7 +11,7 @@ export const GhoPayBorrowing = () => {
           <GhoPayLogo className=" scale-125" />
         </div>
       </div>
-      <div className="flex py-16 gap-24 justify-center items-center flex-wrap">
+      <div className="flex py-12 gap-24 justify-center items-center flex-wrap">
         <div className="flex flex-col gap-4 items-center grow basis-0 max-w-md">
           <div className="flex items-center ">
             <div className="w-8 h-8  ">
@@ -32,6 +32,10 @@ export const GhoPayBorrowing = () => {
           </span>
         </div>
       </div>
+      <span className="relative flex h-5 w-5">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-5 w-5 bg-sky-500"></span>
+      </span>
     </div>
   );
 };

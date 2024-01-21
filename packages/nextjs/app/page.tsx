@@ -16,15 +16,7 @@ import { useAccount, useEnsName } from "wagmi";
 // import { Address as AddressType } from "viem";
 // import { useEnsAvatar} from "wagmi";
 
-/** playground imports */
-// import { GhoPay } from "@/components/gho-pay/sdk/GhoPay";
-// import { GhoPayModal } from "@/components/gho-pay/sdk/components/GhoPayModal";
-// import { GhoPayModalButton } from "@/components/gho-pay/sdk/components/GhoPayModalButton";
-// import { useModal } from "@/components/gho-pay/sdk/hooks/useModal";
-
 const Home: NextPage = () => {
-  // const { isShowing, toggle } = useModal();
-
   const { address } = useAccount();
   const { balance } = useAccountBalance(address);
   const { data: fetchedEns } = useEnsName({ address, enabled: isAddress(address ?? ""), chainId: 1 });
@@ -64,12 +56,7 @@ const Home: NextPage = () => {
             </sub>
           </h3>
         </Hero>
-        {/* <div>
-          <GhoPayModalButton toggleModal={toggle} />
-          <GhoPayModal isShowing={isShowing} hide={toggle}>
-            <GhoPay showHeader />
-          </GhoPayModal>
-        </div> */}
+
         <div className="flex space-y-36 flex-col bg-gradient-to-b from-[#242536] to-[#191920] w-full">
           <GhoCreditCard creditLimit={balance} enabledAssets={[]} ensDomainName={ens} userAddress={address} />
           <GhoBalanceInfo />
