@@ -8,7 +8,7 @@ import * as markets from "@bgd-labs/aave-address-book";
 import dayjs from "dayjs";
 import { ethers } from "ethers";
 
-const useAaveData = (address: any, window: any) => {
+const useAaveData = (address: any) => {
   const [data, setData] = useState({
     formattedPoolReserves: {},
     userSummary: {},
@@ -17,6 +17,8 @@ const useAaveData = (address: any, window: any) => {
   const [error, setError] = useState({});
 
   useEffect(() => {
+    if (!address || !window) return;
+
     const provider = new ethers.providers.Web3Provider(window.ethereum as any);
 
     const poolDataProviderContract = new UiPoolDataProvider({
@@ -66,7 +68,7 @@ const useAaveData = (address: any, window: any) => {
     if (address && window) {
       getAAVEData();
     }
-  }, [address, window]);
+  }, [address]);
 
   return { data, loading, error };
 };
