@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffectOnce, useLocalStorage, useReadLocalStorage } from "usehooks-ts";
 import { Chain, hardhat } from "viem/chains";
 import { Connector, useAccount, useConnect } from "wagmi";

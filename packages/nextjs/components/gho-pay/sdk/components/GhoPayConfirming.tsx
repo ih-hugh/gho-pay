@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 // import aaveAbi from "./AaveABI";
 import { useGhoPayContext } from "./GhoPayContext";
