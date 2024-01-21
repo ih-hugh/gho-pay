@@ -1,15 +1,79 @@
-import React, { useState } from "react";
+import React from "react";
+import { useGhoPayContext } from "./GhoPayContext";
 import { AAVELogo } from "@/components/assets/AAVELogo";
 import { BTCLogo } from "@/components/assets/BTCLogo";
 import { GhoPayLogo } from "@/components/assets/GhoPayLogo";
 import { USDCLogo } from "@/components/assets/USDCLogo";
 import { WETHLogo } from "@/components/assets/WETHLogo";
 import { GradientText } from "@/components/gho-pay/GradientText";
+import { EthereumTransactionTypeExtended, InterestRate, Pool } from "@aave/contract-helpers";
+import * as markets from "@bgd-labs/aave-address-book";
 import classNames from "classnames";
+import { BigNumber, ethers, providers } from "ethers";
+import { useAccount, useWalletClient } from "wagmi";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 
 export const GhoPayStarting = () => {
-  const [paymentAmount] = useState("2500.78");
+  const { balanceDue } = useGhoPayContext();
+  const walletClient = useWalletClient();
+  const { address } = useAccount();
+
+  async function submitTransaction({
+    provider,
+    tx,
+  }: {
+    provider: providers.Web3Provider; // Signing transactions requires a wallet provider, Aave UI currently uses web3-react (https://github.com/NoahZinsmeister/web3-react) for connecting wallets and accessing the wallet provider
+    tx: EthereumTransactionTypeExtended[];
+  }) {
+    console.log("TX: ", tx);
+    const extendedTxData = await tx[0].tx();
+    console.log("EXTENDED_TX_DATA: ", extendedTxData);
+    const { from, ...txData } = extendedTxData;
+    console.log("from: ", from);
+    const signer = provider.getSigner(from);
+    console.log("SIGNER: ", signer);
+    const txResponse = await signer.sendTransaction({
+      ...extendedTxData,
+      value: txData.value ? BigNumber.from(txData.value) : undefined,
+    });
+    console.log("TX_RESPONSE: ", txResponse);
+  }
+
+  async function handlePurchase() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+
+    const pool = new Pool(provider, {
+      POOL: markets.AaveV3Sepolia.POOL,
+      WETH_GATEWAY: markets.AaveV3Sepolia.WETH_GATEWAY,
+    });
+
+    try {
+      if (address) {
+        console.log("ADDRESS: ", address);
+        const tx: EthereumTransactionTypeExtended[] = await pool.borrow({
+          reserve: markets.AaveV3Sepolia.ASSETS.GHO.UNDERLYING,
+          amount: balanceDue.toString(),
+          interestRateMode: InterestRate.Variable,
+          user: address,
+          debtTokenAddress: "0x67ae46EF043F7A4508BD1d6B94DB6c33F0915844",
+        });
+
+        submitTransaction({
+          provider,
+          tx,
+        });
+      }
+    } catch (error) {
+      console.error("handlePurchase_error: ", error);
+    }
+
+    console.log("PROVIDER: ", provider);
+    console.log("WALLET_CLIENT: ", walletClient);
+    // const whatIsThis = await walletClient.data?.signMessage({ message: "hello" });
+    // console.log("WHAT_IS_THIS: ", whatIsThis);
+    console.log("POOL: ", pool);
+    console.log("BALANCE_DUE: ", balanceDue);
+  }
 
   return (
     <div className="flex flex-col items-center bg-base-200 rounded-2xl shadow-2xl  max-w-[600px] w-full max-h-[360px]">
@@ -70,14 +134,17 @@ export const GhoPayStarting = () => {
                 "justify-center items-start  basis-auto text-2xl font-bold text-center whitespace-nowrap 6",
               )}
             >
-              <GradientText color="blue">{paymentAmount}</GradientText>
+              <GradientText color="blue">${balanceDue}</GradientText>
             </span>
           </div>
           <div className="flex gap-3 items-center mb-3">
             <div className="flex items-start bg-[#2d345a] rounded-lg p-2 gap-2 ">
               <ArrowUturnLeftIcon className="h-5 w-5 text-[#0891b2]" />
             </div>
-            <button className="flex items-center bg-[#67e8f9] rounded-lg border-none pointer p-3 gap-2">
+            <button
+              className="flex items-center bg-[#67e8f9] rounded-lg border-none pointer p-3 gap-2"
+              onClick={handlePurchase}
+            >
               <div className="flex items-center">
                 <span className="text-sm font-bold text-[#26284a]  whitespace-nowrap">Confirm Purchase</span>
               </div>

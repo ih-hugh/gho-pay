@@ -281,10 +281,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bgd-labs/aave-address-book@npm:^2.15.0":
-  version: 2.15.2
-  resolution: "@bgd-labs/aave-address-book@npm:2.15.2"
-  checksum: 913b245f29b4b7fd01135e47dd69df2d7c5c5e492532fc2b9e1b1e14591c276ca6bdf8d3cf353328b4cbae90f17af20d6ed77beee8e9985172c6cbd49e633382
+"@bgd-labs/aave-address-book@npm:^2.17.0":
+  version: 2.17.0
+  resolution: "@bgd-labs/aave-address-book@npm:2.17.0"
+  checksum: 6958de514e51841d090426c111573a092434e3d883763609990e0567a027ea0822a74d7fab307efac75d69ece65dc634da5d06ca10cd307f55113a19e885e4b6
   languageName: node
   linkType: hard
 
@@ -2153,7 +2153,7 @@ __metadata:
   dependencies:
     "@aave/contract-helpers": ^1.21.1
     "@aave/math-utils": ^1.21.1
-    "@bgd-labs/aave-address-book": ^2.15.0
+    "@bgd-labs/aave-address-book": ^2.17.0
     "@ethersproject/providers": ^5.7.2
     "@heroicons/react": ^2.1.1
     "@next/font": ^14.1.0

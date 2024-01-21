@@ -16,7 +16,7 @@
   "dependencies": {
     "@aave/contract-helpers": "^1.21.1",
     "@aave/math-utils": "^1.21.1",
-    "@bgd-labs/aave-address-book": "^2.15.0",
+    "@bgd-labs/aave-address-book": "^2.17.0",
     "@ethersproject/providers": "^5.7.2",
     "@heroicons/react": "^2.1.1",
     "@next/font": "^14.1.0",

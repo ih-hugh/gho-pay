@@ -1,8 +1,41 @@
 import React from "react";
+// import aaveAbi from "./AaveABI";
+import { useGhoPayContext } from "./GhoPayContext";
 import { GhoPayLogo } from "@/components/assets/GhoPayLogo";
 import { USDCLogo } from "@/components/assets/USDCLogo";
+// import { useTargetNetwork } from "@/hooks/scaffold-eth/useTargetNetwork";
+// import { EthereumTransactionTypeExtended, InterestRate, Pool } from "@aave/contract-helpers";
+import * as markets from "@bgd-labs/aave-address-book";
+import { ethers } from "ethers";
+import { useAccount } from "wagmi";
 
 export const GhoPayConfirming = () => {
+  const { balanceDue } = useGhoPayContext();
+  const { address } = useAccount();
+  // const { targetNetwork } = useTargetNetwork();
+
+  async function handleConfirm() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+    const signer = provider.getSigner();
+    const erc20Abi = [
+      // Minimal ABI for ERC20 transfer
+      "function balanceOf(address owner) view returns (uint256)",
+      "function transfer(address to, uint amount) returns (bool)",
+    ];
+
+    const tokenAddress = markets.AaveV3Sepolia.ASSETS.GHO.UNDERLYING; // Replace with the contract address of the token
+    const contract = new ethers.Contract(tokenAddress, erc20Abi, signer);
+    const recipient = address; // Recipient address
+    const amount = ethers.utils.parseUnits(balanceDue.toString(), 18); // Amount to transfer, e.g., 1.0 tokens (adjust decimal)
+    try {
+      const transaction = await contract.transfer(recipient, amount);
+      await transaction.wait();
+      console.log("Transaction successful:", transaction);
+    } catch (error) {
+      console.error("Transaction failed:", error);
+    }
+  }
+
   return (
     <div className="flex flex-col items-center bg-base-200 rounded-2xl shadow-2xl pt-10 px-12 pb-16  max-w-[600px] w-full max-h-[360px] h-full">
       <div className="flex items-center gap-3 ">
@@ -44,7 +77,10 @@ export const GhoPayConfirming = () => {
         </div>
       </div>
 
-      <button className="flex items-center self-end bg-primary rounded-lg border-none 4 pointer p-3 gap-2 w-28 h-9">
+      <button
+        className="flex items-center self-end bg-primary rounded-lg border-none 4 pointer p-3 gap-2 w-28 h-9"
+        onClick={handleConfirm}
+      >
         <span className="text-sm font-bold text-primary-content  whitespace-nowrap">Confirm Loan</span>
       </button>
     </div>
