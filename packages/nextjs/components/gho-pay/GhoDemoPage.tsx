@@ -1,9 +1,15 @@
 import { FC } from "react";
 import { GhoButton } from "./GhoButton";
-import { GhoPayButton } from "./GhoPayButton";
 import { GradientText } from "./GradientText";
+import { GhoPay } from "@/components/gho-pay/sdk/GhoPay";
+import { GhoPayModal } from "@/components/gho-pay/sdk/components/GhoPayModal";
+import { GhoPayModalButton } from "@/components/gho-pay/sdk/components/GhoPayModalButton";
+import { useModal } from "@/components/gho-pay/sdk/hooks/useModal";
 
+const DEMO_PURCHASE_AMOUNT = 20.0;
 export const GhoDemoPage: FC<any> = () => {
+  const { isShowing, toggle } = useModal();
+
   return (
     <div className="flex flex-col mb-20">
       <div className="mt-20 main-container flex w-[1000px] gap-[64px] items-start flex-nowrap relative mx-auto my-0">
@@ -71,12 +77,13 @@ export const GhoDemoPage: FC<any> = () => {
             </span>
           </div>
           <div className="flex w-[184px] h-[90px] gap-[18px] items-center shrink-0 flex-nowrap relative z-10">
-            <button className="flex w-[184px] pt-[8px] pr-[16px] pb-[8px]  gap-[7px] justify-center items-center shrink-0 flex-nowrap rounded-[8px] border-none relative shadow-[0_10px_30px_0_rgba(0,0,0,0.25)] z-[11] pointer">
-              <GhoPayButton />
-            </button>
+            <GhoPayModalButton toggleModal={toggle} />
           </div>
         </div>
       </div>
+      <GhoPayModal isShowing={isShowing} hide={toggle}>
+        <GhoPay showHeader balanceDue={DEMO_PURCHASE_AMOUNT} />
+      </GhoPayModal>
     </div>
   );
 };

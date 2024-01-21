@@ -17,8 +17,18 @@ interface GhoCreditCardAssets {
 }
 
 export const GhoCreditCard: FC<GhoCreditCardProps> = ({ ensDomainName, userAddress }) => {
-  const { data }: any = useAaveData(userAddress, window);
-  // console.log(data);
+  const { data: aaveData }: any = useAaveData(userAddress, window);
+
+  // useEffect(() => {
+  //   console.log("AAVE DATA: ", aaveData);
+
+  //   console.log(
+  //     "USER_RESERVE: ",
+  //     aaveData?.usersummary?.formattedPoolReserves?.map((poolReserves: any) => {
+  //       console.log("POOL_RESERVES: ", poolReserves);
+  //     }),
+  //   );
+  // }, [userAddress, aaveData]);
 
   return (
     <>
@@ -47,13 +57,13 @@ export const GhoCreditCard: FC<GhoCreditCardProps> = ({ ensDomainName, userAddre
                   Credit Limit
                 </span>
                 <GradientText className="text-[40px] leading-10" color="blue">
-                  ${data.userSummary?.availableBorrowsUSD?.toLocaleString("en-US", {}).slice(0, 12) ?? "0"}
+                  ${aaveData.userSummary?.availableBorrowsUSD?.toLocaleString("en-US", {}).slice(0, 12) ?? "0"}
                 </GradientText>
                 <span className="h-[19px] shrink-0 basis-auto font-['Inter'] text-[16px] font-light leading-[19px] text-[#fff] relative text-left whitespace-nowrap z-[4]">
                   Loans Outstanding
                 </span>
                 <div className="flex">
-                  ${data.userSummary?.totalBorrowsUSD?.toLocaleString("en-US", {}).slice(0) ?? "0"}
+                  ${aaveData.userSummary?.totalBorrowsUSD?.toLocaleString("en-US", {}).slice(0) ?? "0"}
                 </div>
               </div>
               <div className="flex pt-[24px] pr-0 pb-0 pl-0 flex-col items-end grow shrink-0 basis-0 flex-nowrap relative z-[9]">

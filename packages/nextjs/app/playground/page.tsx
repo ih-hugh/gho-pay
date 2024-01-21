@@ -32,7 +32,7 @@ const Test = () => {
         const poolDataProviderContract = new UiPoolDataProvider({
           uiPoolDataProviderAddress: markets.AaveV3Sepolia.UI_POOL_DATA_PROVIDER,
           provider,
-          chainId: ChainId.mainnet,
+          chainId: ChainId.sepolia,
         });
 
         const getAAVEData = async () => {
